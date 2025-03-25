@@ -3,8 +3,8 @@ Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, wpc, tab, tabs, custom tabs
 Tested up to: 6.7
-Version: 4.1.6
-Stable tag: 4.1.6
+Version: 4.1.7
+Stable tag: 4.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,10 @@ Please try other plugins from us:
 4. Now you can go to WPClever > Product Tabs to manager product tabs
 
 == Changelog ==
+
+= 4.1.7 =
+* Updated: Optimized the code
+* Updated: Compatible with WP 6.7 & Woo 9.7
 
 = 4.1.6 =
 * Fixed: Minor CSS/JS issues in the backend

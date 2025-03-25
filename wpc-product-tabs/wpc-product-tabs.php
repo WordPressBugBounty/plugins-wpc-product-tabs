@@ -3,7 +3,7 @@
 Plugin Name: WPC Product Tabs for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Product tabs manager for WooCommerce.
-Version: 4.1.6
+Version: 4.1.7
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: wpc-product-tabs
@@ -12,14 +12,14 @@ Requires Plugins: woocommerce
 Requires at least: 4.0
 Tested up to: 6.7
 WC requires at least: 3.0
-WC tested up to: 9.5
+WC tested up to: 9.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.1.6' );
+! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.1.7' );
 ! defined( 'WOOST_LITE' ) && define( 'WOOST_LITE', __FILE__ );
 ! defined( 'WOOST_FILE' ) && define( 'WOOST_FILE', __FILE__ );
 ! defined( 'WOOST_URI' ) && define( 'WOOST_URI', plugin_dir_url( __FILE__ ) );
@@ -258,9 +258,12 @@ if ( ! function_exists( 'woost_init' ) ) {
                             <p>
 								<?php printf( /* translators: stars */ esc_html__( 'Thank you for using our plugin! If you are satisfied, please reward it a full five-star %s rating.', 'wpc-product-tabs' ), '<span style="color:#ffb900">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' ); ?>
                                 <br/>
-                                <a href="<?php echo esc_url( WOOST_REVIEWS ); ?>" target="_blank"><?php esc_html_e( 'Reviews', 'wpc-product-tabs' ); ?></a> |
-                                <a href="<?php echo esc_url( WOOST_CHANGELOG ); ?>" target="_blank"><?php esc_html_e( 'Changelog', 'wpc-product-tabs' ); ?></a> |
-                                <a href="<?php echo esc_url( WOOST_DISCUSSION ); ?>" target="_blank"><?php esc_html_e( 'Discussion', 'wpc-product-tabs' ); ?></a>
+                                <a href="<?php echo esc_url( WOOST_REVIEWS ); ?>"
+                                   target="_blank"><?php esc_html_e( 'Reviews', 'wpc-product-tabs' ); ?></a> |
+                                <a href="<?php echo esc_url( WOOST_CHANGELOG ); ?>"
+                                   target="_blank"><?php esc_html_e( 'Changelog', 'wpc-product-tabs' ); ?></a> |
+                                <a href="<?php echo esc_url( WOOST_DISCUSSION ); ?>"
+                                   target="_blank"><?php esc_html_e( 'Discussion', 'wpc-product-tabs' ); ?></a>
                             </p>
                         </div>
 						<?php if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) { ?>
@@ -270,13 +273,17 @@ if ( ! function_exists( 'woost_init' ) ) {
 						<?php } ?>
                         <div class="wpclever_settings_page_nav">
                             <h2 class="nav-tab-wrapper">
-                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=global' ) ); ?>" class="<?php echo esc_attr( $active_tab === 'global' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
+                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=global' ) ); ?>"
+                                   class="<?php echo esc_attr( $active_tab === 'global' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
 									<?php esc_html_e( 'Global Tabs', 'wpc-product-tabs' ); ?>
                                 </a>
-                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=premium' ) ); ?>" class="<?php echo esc_attr( $active_tab === 'premium' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>" style="color: #c9356e">
+                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=premium' ) ); ?>"
+                                   class="<?php echo esc_attr( $active_tab === 'premium' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>"
+                                   style="color: #c9356e">
 									<?php esc_html_e( 'Premium Version', 'wpc-product-tabs' ); ?>
                                 </a>
-                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-kit' ) ); ?>" class="nav-tab">
+                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-kit' ) ); ?>"
+                                   class="nav-tab">
 									<?php esc_html_e( 'Essential Kit', 'wpc-product-tabs' ); ?>
                                 </a>
                             </h2>
@@ -329,7 +336,8 @@ if ( ! function_exists( 'woost_init' ) ) {
                                 <div class="wpclever_settings_page_content_text">
                                     <p>
                                         Get the Premium Version just $29!
-                                        <a href="https://wpclever.net/downloads/product-tabs?utm_source=pro&utm_medium=woost&utm_campaign=wporg" target="_blank">https://wpclever.net/downloads/product-tabs</a>
+                                        <a href="https://wpclever.net/downloads/product-tabs?utm_source=pro&utm_medium=woost&utm_campaign=wporg"
+                                           target="_blank">https://wpclever.net/downloads/product-tabs</a>
                                     </p>
                                     <p><strong>Extra features for Premium Version:</strong></p>
                                     <ul style="margin-bottom: 0">
@@ -347,13 +355,17 @@ if ( ! function_exists( 'woost_init' ) ) {
                             </div>
                             <div class="wpclever_settings_page_suggestion_content">
                                 <div>
-                                    To display custom engaging real-time messages on any wished positions, please install
-                                    <a href="https://wordpress.org/plugins/wpc-smart-messages/" target="_blank">WPC Smart Messages</a> plugin. It's free!
+                                    To display custom engaging real-time messages on any wished positions, please
+                                    install
+                                    <a href="https://wordpress.org/plugins/wpc-smart-messages/" target="_blank">WPC
+                                        Smart Messages</a> plugin. It's free!
                                 </div>
                                 <div>
                                     Wanna save your precious time working on variations? Try our brand-new free plugin
-                                    <a href="https://wordpress.org/plugins/wpc-variation-bulk-editor/" target="_blank">WPC Variation Bulk Editor</a> and
-                                    <a href="https://wordpress.org/plugins/wpc-variation-duplicator/" target="_blank">WPC Variation Duplicator</a>.
+                                    <a href="https://wordpress.org/plugins/wpc-variation-bulk-editor/" target="_blank">WPC
+                                        Variation Bulk Editor</a> and
+                                    <a href="https://wordpress.org/plugins/wpc-variation-duplicator/" target="_blank">WPC
+                                        Variation Duplicator</a>.
                                 </div>
                             </div>
                         </div>
@@ -454,7 +466,10 @@ if ( ! function_exists( 'woost_init' ) ) {
                     <div class="<?php echo esc_attr( 'woost-tab woost-tab-' . $tab['type'] ); ?> <?php echo esc_attr( $new ? 'active' : '' ); ?>">
                         <div class="woost-tab-header">
                             <span class="woost-tab-move"><?php esc_html_e( 'move', 'wpc-product-tabs' ); ?></span>
-                            <span class="woost-tab-label"><span class="woost-tab-title"><?php echo esc_html( $tab['title'] ); ?></span> <span class="woost-tab-label-type">#<?php echo esc_attr( $tab['type'] ); ?></span> <span class="woost-tab-label-apply"><?php echo esc_attr( $tab['apply'] ); ?></span></span>
+                            <span class="woost-tab-label"><span
+                                        class="woost-tab-title"><?php echo esc_html( $tab['title'] ); ?></span> <span
+                                        class="woost-tab-label-type">#<?php echo esc_attr( $tab['type'] ); ?></span> <span
+                                        class="woost-tab-label-apply"><?php echo esc_attr( $tab['apply'] ); ?></span></span>
                             <span class="woost-tab-remove"><?php esc_html_e( 'remove', 'wpc-product-tabs' ); ?></span>
                         </div>
                         <div class="woost-tab-content">
@@ -465,10 +480,12 @@ if ( ! function_exists( 'woost_init' ) ) {
                                 <div class="woost-tab-line-value">
                                     <div class="woost_apply_wrapper">
                                         <label>
-                                            <select class="woost_apply" name="woost_tabs[<?php echo esc_attr( $key ); ?>][apply]">
+                                            <select class="woost_apply"
+                                                    name="woost_tabs[<?php echo esc_attr( $key ); ?>][apply]">
                                                 <option value="none" <?php selected( $tab['apply'], 'none' ); ?>><?php esc_attr_e( 'None (Disable)', 'wpc-product-tabs' ); ?></option>
                                                 <option value="all" <?php selected( $tab['apply'], 'all' ); ?>><?php esc_attr_e( 'All products', 'wpc-product-tabs' ); ?></option>
-                                                <option value="products" <?php selected( $tab['apply'], 'products' ); ?> disabled><?php esc_attr_e( 'Selected products', 'wpc-product-tabs' ); ?></option>
+                                                <option value="products" <?php selected( $tab['apply'], 'products' ); ?>
+                                                        disabled><?php esc_attr_e( 'Selected products', 'wpc-product-tabs' ); ?></option>
 												<?php
 												$taxonomies = get_object_taxonomies( 'product', 'objects' );
 
@@ -480,7 +497,9 @@ if ( ! function_exists( 'woost_init' ) ) {
                                     </div>
                                     <div class="woost_apply_val_wrapper woost_show hide_if_apply_none hide_if_apply_all hide_if_apply_products">
                                         <label>
-                                            <select class="woost_terms" multiple="multiple" name="woost_tabs[<?php echo esc_attr( $key ); ?>][apply_val][]" data-<?php echo esc_attr( $tab['apply'] ); ?>="<?php echo esc_attr( implode( ',', (array) $tab['apply_val'] ) ); ?>">
+                                            <select class="woost_terms" multiple="multiple"
+                                                    name="woost_tabs[<?php echo esc_attr( $key ); ?>][apply_val][]"
+                                                    data-<?php echo esc_attr( $tab['apply'] ); ?>="<?php echo esc_attr( implode( ',', (array) $tab['apply_val'] ) ); ?>">
 												<?php if ( is_array( $tab['apply_val'] ) && ! empty( $tab['apply_val'] ) ) {
 													foreach ( $tab['apply_val'] as $t ) {
 														if ( $term = get_term_by( 'slug', $t, $tab['apply'] ) ) {
@@ -498,7 +517,8 @@ if ( ! function_exists( 'woost_init' ) ) {
                                 </div>
                                 <div class="woost-tab-line-value">
                                     <label>
-                                        <select name="woost_tabs[<?php echo esc_attr( $key ); ?>][roles][]" multiple class="woost_roles">
+                                        <select name="woost_tabs[<?php echo esc_attr( $key ); ?>][roles][]" multiple
+                                                class="woost_roles">
 											<?php
 											global $wp_roles;
 											$roles = ( ! empty( $tab['roles'] ) ) ? (array) $tab['roles'] : [ 'woost_all' ];
@@ -520,7 +540,8 @@ if ( ! function_exists( 'woost_init' ) ) {
                                 </div>
                                 <div class="woost-tab-line-value">
                                     <label>
-                                        <select class="woost_type" name="woost_tabs[<?php echo esc_attr( $key ); ?>][type]">
+                                        <select class="woost_type"
+                                                name="woost_tabs[<?php echo esc_attr( $key ); ?>][type]">
                                             <option value="description" <?php selected( $tab['type'], 'description' ); ?>><?php esc_html_e( 'Description', 'wpc-product-tabs' ); ?></option>
                                             <option value="additional_information" <?php selected( $tab['type'], 'additional_information' ); ?>><?php esc_html_e( 'Additional Information', 'wpc-product-tabs' ); ?></option>
                                             <option value="reviews" <?php selected( $tab['type'], 'reviews' ); ?>><?php /* translators: reviews */
@@ -578,9 +599,13 @@ if ( ! function_exists( 'woost_init' ) ) {
 									<?php esc_html_e( 'Title', 'wpc-product-tabs' ); ?>
                                 </div>
                                 <div class="woost-tab-line-value">
-                                    <input type="hidden" value="<?php echo esc_attr( $key ); ?>" name="woost_tabs[<?php echo esc_attr( $key ); ?>][key]"/>
+                                    <input type="hidden" value="<?php echo esc_attr( $key ); ?>"
+                                           name="woost_tabs[<?php echo esc_attr( $key ); ?>][key]"/>
                                     <label>
-                                        <input type="text" class="woost-tab-title-input" style="width: 100%" name="woost_tabs[<?php echo esc_attr( $key ); ?>][title]" placeholder="<?php echo esc_attr( $tab['type'] ); ?>" value="<?php echo esc_attr( $tab['title'] ); ?>" required/>
+                                        <input type="text" class="woost-tab-title-input" style="width: 100%"
+                                               name="woost_tabs[<?php echo esc_attr( $key ); ?>][title]"
+                                               placeholder="<?php echo esc_attr( $tab['type'] ); ?>"
+                                               value="<?php echo esc_attr( $tab['title'] ); ?>" required/>
                                     </label>
                                 </div>
                             </div>
@@ -626,75 +651,88 @@ if ( ! function_exists( 'woost_init' ) ) {
 				function new_tab( $product_id = 0 ) {
 					?>
                     <div class="woost-tabs-new">
-                        <input type="button" class="button woost-tab-new" data-product_id="<?php echo esc_attr( $product_id ); ?>" value="<?php esc_attr_e( '+ Add new tab', 'wpc-product-tabs' ); ?>"/>
+                        <input type="button" class="button woost-tab-new"
+                               data-product_id="<?php echo esc_attr( $product_id ); ?>"
+                               value="<?php esc_attr_e( '+ Add new tab', 'wpc-product-tabs' ); ?>"/>
                     </div>
 					<?php
 				}
 
 				function get_tabs( $product ) {
+					// Initialize variables with default values
+					$product_id = 0;
+					$saved_tabs = [];
+
+					// Optimize product ID retrieval
 					if ( is_numeric( $product ) ) {
 						$product_id = $product;
 						$product    = wc_get_product( $product_id );
-					} elseif ( is_a( $product, 'WC_Product' ) ) {
+					} elseif ( $product instanceof WC_Product ) { // More efficient than is_a()
 						$product_id = $product->get_id();
-					} else {
-						$product    = null;
-						$product_id = 0;
 					}
 
-					$saved_tabs = [];
-
-					if ( $product && $product_id ) {
-						$overwrite  = get_post_meta( $product_id, 'woost_overwrite', true );
-						$saved_tabs = self::$tabs;
-
-						if ( $overwrite === 'overwrite' || $overwrite === 'on' ) {
-							$saved_tabs = get_post_meta( $product_id, 'woost_tabs', true ) ?: [];
-						}
-
-						if ( $overwrite === 'prepend' || $overwrite === 'append' ) {
-							$single_tabs = get_post_meta( $product_id, 'woost_tabs', true ) ?: [];
-
-							if ( $overwrite === 'prepend' ) {
-								$saved_tabs = array_merge( $single_tabs, $saved_tabs );
-							}
-
-							if ( $overwrite === 'append' ) {
-								$saved_tabs = array_merge( $saved_tabs, $single_tabs );
-							}
-						}
-
-						if ( is_array( $saved_tabs ) && ! empty( $saved_tabs ) ) {
-							// check apply
-							foreach ( $saved_tabs as $key => $saved_tab ) {
-								$saved_tab = array_merge( [
-									'key'       => '',
-									'type'      => 'custom',
-									'apply'     => 'all',
-									'apply_val' => [],
-									'products'  => [],
-									'roles'     => [ 'woost_all' ],
-									'title'     => '',
-									'content'   => ''
-								], $saved_tab );
-
-								if ( ! empty( $saved_tab['apply'] ) && ( $saved_tab['apply'] !== 'all' ) && ! empty( $saved_tab['apply_val'] ) && ! has_term( $saved_tab['apply_val'], $saved_tab['apply'], $product_id ) ) {
-									// doesn't apply for current product
-									unset( $saved_tabs[ $key ] );
-								}
-
-								if ( ! empty( $saved_tab['apply'] ) && ( $saved_tab['apply'] === 'products' ) && ! empty( $saved_tab['products'] ) && ! in_array( $product_id, $saved_tab['products'] ) ) {
-									// doesn't apply for current product
-									unset( $saved_tabs[ $key ] );
-								}
-
-								if ( ! self::check_roles( $saved_tab ) ) {
-									// doesn't apply for current user role
-									unset( $saved_tabs[ $key ] );
-								}
-							}
-						}
+					// Early return if no valid product
+					if ( ! $product || ! $product_id ) {
+						return apply_filters( 'woost_get_tabs', [], $product );
 					}
+
+					// Cache meta values to reduce database calls
+					$overwrite    = get_post_meta( $product_id, 'woost_overwrite', true );
+					$product_tabs = get_post_meta( $product_id, 'woost_tabs', true ) ?: [];
+					$saved_tabs   = self::$tabs;
+
+					// Simplify overwrite logic
+					switch ( $overwrite ) {
+						case 'overwrite':
+						case 'on':
+							$saved_tabs = $product_tabs;
+							break;
+						case 'prepend':
+							$saved_tabs = array_merge( $product_tabs, $saved_tabs );
+							break;
+						case 'append':
+							$saved_tabs = array_merge( $saved_tabs, $product_tabs );
+							break;
+					}
+
+					if ( ! is_array( $saved_tabs ) || empty( $saved_tabs ) ) {
+						return apply_filters( 'woost_get_tabs', $saved_tabs, $product );
+					}
+
+					// Define default tab structure once
+					$default_tab = [
+						'key'       => '',
+						'type'      => 'custom',
+						'apply'     => 'all',
+						'apply_val' => [],
+						'products'  => [],
+						'roles'     => [ 'woost_all' ],
+						'title'     => '',
+						'content'   => ''
+					];
+
+					// Filter tabs in a single pass
+					$saved_tabs = array_filter( $saved_tabs, function ( $saved_tab ) use ( $default_tab, $product_id ) {
+						$saved_tab = array_merge( $default_tab, $saved_tab );
+
+						// Check if tab should be removed based on conditions
+						if ( ! empty( $saved_tab['apply'] ) ) {
+							if ( $saved_tab['apply'] !== 'all' ) {
+								if ( ! empty( $saved_tab['apply_val'] ) &&
+								     ! has_term( $saved_tab['apply_val'], $saved_tab['apply'], $product_id ) ) {
+									return false;
+								}
+							}
+
+							if ( $saved_tab['apply'] === 'products' &&
+							     ! empty( $saved_tab['products'] ) &&
+							     ! in_array( $product_id, $saved_tab['products'], true ) ) {
+								return false;
+							}
+						}
+
+						return self::check_roles( $saved_tab );
+					} );
 
 					return apply_filters( 'woost_get_tabs', $saved_tabs, $product );
 				}
@@ -762,80 +800,78 @@ if ( ! function_exists( 'woost_init' ) ) {
 
 					$saved_tabs = self::get_tabs( $product );
 
-					if ( is_array( $saved_tabs ) && ! empty( $saved_tabs ) ) {
-						$saved_tab_has_description = $saved_tab_has_reviews = $saved_tab_has_additional_information = $saved_tab_has_woosb = $saved_tab_has_woosb_bundled = $saved_tab_has_woosb_bundles = $saved_tab_has_woosg = $saved_tab_has_wpcpf = $saved_tab_has_wpcbr = false;
-						$priority                  = 0;
+					if ( ! is_array( $saved_tabs ) || empty( $saved_tabs ) ) {
+						return $tabs;
+					}
 
-						foreach ( $saved_tabs as $key => $saved_tab ) {
-							$saved_tab_title = apply_filters( 'woost_tab_title', $saved_tab['title'], $key, $saved_tab );
-							$saved_tab_type  = $saved_tab['type'];
-							$special_tabs    = [
-								'description',
-								'additional_information',
-								'reviews',
-								'woosb',
-								'woosb_bundled',
-								'woosb_bundles',
-								'woosg',
-								'wpcpf',
-								'wpcbr'
+					// Define special tabs as a constant or class property to avoid recreation
+					$special_tabs = [
+						'description'            => false,
+						'additional_information' => false,
+						'reviews'                => false,
+						'woosb'                  => false,
+						'woosb_bundled'          => false,
+						'woosb_bundles'          => false,
+						'woosg'                  => false,
+						'wpcpf'                  => false,
+						'wpcbr'                  => false
+					];
+
+					// Process tabs
+					foreach ( $saved_tabs as $key => $saved_tab ) {
+						$saved_tab_type  = $saved_tab['type'];
+						$saved_tab_title = apply_filters( 'woost_tab_title', $saved_tab['title'], $key, $saved_tab );
+
+						if ( isset( $special_tabs[ $saved_tab_type ] ) ) {
+							$tabs[ $saved_tab_type ]         = [
+								'title'    => sprintf( $saved_tab_title, $product->get_review_count() ),
+								'priority' => $key // Using $key instead of separate counter
 							];
-
-							if ( in_array( $saved_tab_type, $special_tabs ) ) {
-								$tabs[ $saved_tab_type ]['title']     = sprintf( $saved_tab_title, $product->get_review_count() );
-								$tabs[ $saved_tab_type ]['priority']  = $priority;
-								${'saved_tab_has_' . $saved_tab_type} = true;
-							} else {
-								$tab_slug          = 'woost-' . $key;
-								$tabs[ $tab_slug ] = [
-									'title'    => $saved_tab_title,
-									'priority' => $priority,
-									'callback' => [ $this, 'tab_content' ]
-								];
-							}
-
-							$priority ++;
-						}
-
-						if ( ! $saved_tab_has_description || ! $product->get_description() ) {
-							unset( $tabs['description'] );
-						}
-
-						if ( ! $saved_tab_has_reviews || ! comments_open() ) {
-							unset( $tabs['reviews'] );
-						}
-
-						if ( ! $saved_tab_has_additional_information || ( ! $product->has_attributes() && ! apply_filters( 'wc_product_enable_dimensions_display', $product->has_weight() || $product->has_dimensions() ) ) ) {
-							unset( $tabs['additional_information'] );
-						}
-
-						if ( ! $saved_tab_has_woosb || ! $product->is_type( 'woosb' ) ) {
-							// old version
-							unset( $tabs['woosb'] );
-						}
-
-						if ( ! $saved_tab_has_woosb_bundled ) {
-							unset( $tabs['woosb_bundled'] );
-						}
-
-						if ( ! $saved_tab_has_woosb_bundles ) {
-							unset( $tabs['woosb_bundles'] );
-						}
-
-						if ( ! $saved_tab_has_woosg || ! $product->is_type( 'woosg' ) ) {
-							unset( $tabs['woosg'] );
-						}
-
-						if ( ! $saved_tab_has_wpcpf ) {
-							unset( $tabs['wpcpf'] );
-						}
-
-						if ( ! $saved_tab_has_wpcbr ) {
-							unset( $tabs['wpcbr'] );
+							$special_tabs[ $saved_tab_type ] = true;
+						} else {
+							$tabs[ 'woost-' . $key ] = [
+								'title'    => $saved_tab_title,
+								'priority' => $key,
+								'callback' => [ $this, 'tab_content' ]
+							];
 						}
 					}
 
-					return $tabs;
+					// Clean up tabs in a more efficient way
+					if ( ! $special_tabs['description'] || ! $product->get_description() ) {
+						unset( $tabs['description'] );
+					}
+
+					if ( ! $special_tabs['reviews'] || ! comments_open() ) {
+						unset( $tabs['reviews'] );
+					}
+
+					if ( ! $special_tabs['additional_information'] ||
+					     ( ! $product->has_attributes() &&
+					       ! apply_filters( 'wc_product_enable_dimensions_display',
+						       $product->has_weight() || $product->has_dimensions()
+					       ) )
+					) {
+						unset( $tabs['additional_information'] );
+					}
+
+					// Handle product-specific tabs
+					if ( ! $special_tabs['woosb'] || ! $product->is_type( 'woosb' ) ) {
+						unset( $tabs['woosb'] );
+					}
+
+					if ( ! $special_tabs['woosg'] || ! $product->is_type( 'woosg' ) ) {
+						unset( $tabs['woosg'] );
+					}
+
+					// Remove unused special tabs
+					foreach ( [ 'woosb_bundled', 'woosb_bundles', 'wpcpf', 'wpcbr' ] as $tab ) {
+						if ( ! $special_tabs[ $tab ] ) {
+							unset( $tabs[ $tab ] );
+						}
+					}
+
+					return apply_filters( 'woost_product_tabs', $tabs, $product );
 				}
 
 				function tab_content( $name, $tab ) {
@@ -845,31 +881,50 @@ if ( ! function_exists( 'woost_init' ) ) {
 						return;
 					}
 
-					$content    = '';
 					$saved_tabs = self::get_tabs( $product );
 
-					if ( is_array( $saved_tabs ) && ! empty( $saved_tabs ) ) {
-						$key = str_replace( 'woost-', '', $name );
-
-						if ( ! isset( $saved_tabs[ $key ] ) ) {
-							$key = (int) preg_replace( '/\D/', '', $name );
-						}
-
-						if ( isset( $saved_tabs[ $key ] ) ) {
-							$content = apply_filters( 'woost_tab_heading', '<h2 class="woost-tab-heading">' . esc_html( $saved_tabs[ $key ]['title'] ) . '</h2>', $name, $tab );
-
-							if ( isset( $saved_tabs[ $key ]['type'] ) && ( $saved_tabs[ $key ]['type'] === 'dynamic' ) ) {
-								$content .= wpautop( stripslashes( html_entity_decode( get_post_meta( $product->get_id(), 'woost_' . $key, true ) ) ) );
-							} else {
-								if ( ! empty( $saved_tabs[ $key ]['content'] ) ) {
-									$content .= wpautop( stripslashes( html_entity_decode( $saved_tabs[ $key ]['content'] ) ) );
-								}
-							}
-						}
+					if ( ! is_array( $saved_tabs ) || empty( $saved_tabs ) ) {
+						return;
 					}
 
-					// ignore woost shortcodes
-					$content = str_replace( '[woost_', '[woost_ignored_', $content );
+					// Extract key from name more efficiently
+					$key = strpos( $name, 'woost-' ) === 0
+						? substr( $name, 6 )
+						: (int) preg_replace( '/\D/', '', $name );
+
+					if ( ! isset( $saved_tabs[ $key ] ) ) {
+						return;
+					}
+
+					$tab_data = $saved_tabs[ $key ];
+
+					// Build heading
+					$content = apply_filters(
+						'woost_tab_heading',
+						sprintf( '<h2 class="woost-tab-heading">%s</h2>', esc_html( $tab_data['title'] ) ),
+						$name,
+						$tab
+					);
+
+					// Get content based on tab type
+					if ( isset( $tab_data['type'] ) && $tab_data['type'] === 'dynamic' ) {
+						$meta_key    = 'woost_' . $key;
+						$raw_content = get_post_meta( $product->get_id(), $meta_key, true );
+					} elseif ( ! empty( $tab_data['content'] ) ) {
+						$raw_content = $tab_data['content'];
+					} else {
+						$raw_content = '';
+					}
+
+					// Process content if exists
+					if ( $raw_content ) {
+						$content .= wpautop( stripslashes( html_entity_decode( $raw_content ) ) );
+					}
+
+					// Process shortcodes - using strtr for better performance
+					$content = strtr( $content, [ '[woost_' => '[woost_ignored_' ] );
+
+					// Output filtered content
 					echo apply_filters( 'woost_tab_content', do_shortcode( $content ), $name, $tab );
 				}
 
@@ -944,30 +999,37 @@ if ( ! function_exists( 'woost_init' ) ) {
                             <span class="woost-overwrite-label"><?php esc_html_e( 'Product Tabs', 'wpc-product-tabs' ); ?></span>
                             <span class="woost-overwrite-items">
                                 <label class="woost-overwrite-item">
-                                    <input name="woost_overwrite" type="radio" value="default" <?php echo esc_attr( empty( $overwrite ) || $overwrite === 'default' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Global', 'wpc-product-tabs' ); ?>
+                                    <input name="woost_overwrite" type="radio"
+                                           value="default" <?php echo esc_attr( empty( $overwrite ) || $overwrite === 'default' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Global', 'wpc-product-tabs' ); ?>
                                 </label>
                                 <label class="woost-overwrite-item">
-                                    <input name="woost_overwrite" type="radio" value="overwrite" <?php echo esc_attr( $overwrite === 'overwrite' || $overwrite === 'on' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Overwrite', 'wpc-product-tabs' ); ?>
+                                    <input name="woost_overwrite" type="radio"
+                                           value="overwrite" <?php echo esc_attr( $overwrite === 'overwrite' || $overwrite === 'on' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Overwrite', 'wpc-product-tabs' ); ?>
                                 </label>
                                 <label class="woost-overwrite-item">
-                                    <input name="woost_overwrite" type="radio" value="prepend" <?php echo esc_attr( $overwrite === 'prepend' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Prepend', 'wpc-product-tabs' ); ?>
+                                    <input name="woost_overwrite" type="radio"
+                                           value="prepend" <?php echo esc_attr( $overwrite === 'prepend' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Prepend', 'wpc-product-tabs' ); ?>
                                 </label>
                                 <label class="woost-overwrite-item">
-                                    <input name="woost_overwrite" type="radio" value="append" <?php echo esc_attr( $overwrite === 'append' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Append', 'wpc-product-tabs' ); ?>
+                                    <input name="woost_overwrite" type="radio"
+                                           value="append" <?php echo esc_attr( $overwrite === 'append' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Append', 'wpc-product-tabs' ); ?>
                                 </label>
                             </span>
                         </div>
                         <div class="woost-tabs-global">
-                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=global' ) ); ?>" target="_blank"><?php esc_html_e( 'Manager Global Tabs', 'wpc-product-tabs' ); ?></a>
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=global' ) ); ?>"
+                               target="_blank"><?php esc_html_e( 'Manager Global Tabs', 'wpc-product-tabs' ); ?></a>
                         </div>
                         <div class="woost-tabs-wrapper">
                             <span style="color: #c9356e;">This feature only available on the Premium Version. Click
-                                <a href="https://wpclever.net/downloads/product-tabs?utm_source=pro&utm_medium=woost&utm_campaign=wporg" target="_blank">here</a>to buy, just $29!
+                                <a href="https://wpclever.net/downloads/product-tabs?utm_source=pro&utm_medium=woost&utm_campaign=wporg"
+                                   target="_blank">here</a>to buy, just $29!
                             </span>
                         </div>
                         <div class="woost-fields-label">
 							<?php esc_html_e( 'Dynamic Fields', 'wpc-product-tabs' ); ?>
-                            <span class="woocommerce-help-tip" data-tip="<?php esc_attr_e( 'These fields corresponding to the Global Tabs have dynamic content.', 'wpc-product-tabs' ); ?>"></span>
+                            <span class="woocommerce-help-tip"
+                                  data-tip="<?php esc_attr_e( 'These fields corresponding to the Global Tabs have dynamic content.', 'wpc-product-tabs' ); ?>"></span>
                         </div>
                         <div class="woost-fields">
 							<?php
