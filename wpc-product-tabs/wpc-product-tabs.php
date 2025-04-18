@@ -3,23 +3,23 @@
 Plugin Name: WPC Product Tabs for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Product tabs manager for WooCommerce.
-Version: 4.1.8
+Version: 4.1.9
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: wpc-product-tabs
 Domain Path: /languages/
 Requires Plugins: woocommerce
 Requires at least: 4.0
-Tested up to: 6.7
+Tested up to: 6.8
 WC requires at least: 3.0
-WC tested up to: 9.7
+WC tested up to: 9.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.1.8' );
+! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.1.9' );
 ! defined( 'WOOST_LITE' ) && define( 'WOOST_LITE', __FILE__ );
 ! defined( 'WOOST_FILE' ) && define( 'WOOST_FILE', __FILE__ );
 ! defined( 'WOOST_URI' ) && define( 'WOOST_URI', plugin_dir_url( __FILE__ ) );
@@ -258,9 +258,12 @@ if ( ! function_exists( 'woost_init' ) ) {
                             <p>
 								<?php printf( /* translators: stars */ esc_html__( 'Thank you for using our plugin! If you are satisfied, please reward it a full five-star %s rating.', 'wpc-product-tabs' ), '<span style="color:#ffb900">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' ); ?>
                                 <br/>
-                                <a href="<?php echo esc_url( WOOST_REVIEWS ); ?>" target="_blank"><?php esc_html_e( 'Reviews', 'wpc-product-tabs' ); ?></a> |
-                                <a href="<?php echo esc_url( WOOST_CHANGELOG ); ?>" target="_blank"><?php esc_html_e( 'Changelog', 'wpc-product-tabs' ); ?></a> |
-                                <a href="<?php echo esc_url( WOOST_DISCUSSION ); ?>" target="_blank"><?php esc_html_e( 'Discussion', 'wpc-product-tabs' ); ?></a>
+                                <a href="<?php echo esc_url( WOOST_REVIEWS ); ?>"
+                                   target="_blank"><?php esc_html_e( 'Reviews', 'wpc-product-tabs' ); ?></a> |
+                                <a href="<?php echo esc_url( WOOST_CHANGELOG ); ?>"
+                                   target="_blank"><?php esc_html_e( 'Changelog', 'wpc-product-tabs' ); ?></a> |
+                                <a href="<?php echo esc_url( WOOST_DISCUSSION ); ?>"
+                                   target="_blank"><?php esc_html_e( 'Discussion', 'wpc-product-tabs' ); ?></a>
                             </p>
                         </div>
 						<?php if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) { ?>
@@ -270,13 +273,17 @@ if ( ! function_exists( 'woost_init' ) ) {
 						<?php } ?>
                         <div class="wpclever_settings_page_nav">
                             <h2 class="nav-tab-wrapper">
-                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=global' ) ); ?>" class="<?php echo esc_attr( $active_tab === 'global' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
+                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=global' ) ); ?>"
+                                   class="<?php echo esc_attr( $active_tab === 'global' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>">
 									<?php esc_html_e( 'Global Tabs', 'wpc-product-tabs' ); ?>
                                 </a>
-                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=premium' ) ); ?>" class="<?php echo esc_attr( $active_tab === 'premium' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>" style="color: #c9356e">
+                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=premium' ) ); ?>"
+                                   class="<?php echo esc_attr( $active_tab === 'premium' ? 'nav-tab nav-tab-active' : 'nav-tab' ); ?>"
+                                   style="color: #c9356e">
 									<?php esc_html_e( 'Premium Version', 'wpc-product-tabs' ); ?>
                                 </a>
-                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-kit' ) ); ?>" class="nav-tab">
+                                <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-kit' ) ); ?>"
+                                   class="nav-tab">
 									<?php esc_html_e( 'Essential Kit', 'wpc-product-tabs' ); ?>
                                 </a>
                             </h2>
@@ -329,7 +336,8 @@ if ( ! function_exists( 'woost_init' ) ) {
                                 <div class="wpclever_settings_page_content_text">
                                     <p>
                                         Get the Premium Version just $29!
-                                        <a href="https://wpclever.net/downloads/product-tabs?utm_source=pro&utm_medium=woost&utm_campaign=wporg" target="_blank">https://wpclever.net/downloads/product-tabs</a>
+                                        <a href="https://wpclever.net/downloads/product-tabs?utm_source=pro&utm_medium=woost&utm_campaign=wporg"
+                                           target="_blank">https://wpclever.net/downloads/product-tabs</a>
                                     </p>
                                     <p><strong>Extra features for Premium Version:</strong></p>
                                     <ul style="margin-bottom: 0">
@@ -347,13 +355,17 @@ if ( ! function_exists( 'woost_init' ) ) {
                             </div>
                             <div class="wpclever_settings_page_suggestion_content">
                                 <div>
-                                    To display custom engaging real-time messages on any wished positions, please install
-                                    <a href="https://wordpress.org/plugins/wpc-smart-messages/" target="_blank">WPC Smart Messages</a> plugin. It's free!
+                                    To display custom engaging real-time messages on any wished positions, please
+                                    install
+                                    <a href="https://wordpress.org/plugins/wpc-smart-messages/" target="_blank">WPC
+                                        Smart Messages</a> plugin. It's free!
                                 </div>
                                 <div>
                                     Wanna save your precious time working on variations? Try our brand-new free plugin
-                                    <a href="https://wordpress.org/plugins/wpc-variation-bulk-editor/" target="_blank">WPC Variation Bulk Editor</a> and
-                                    <a href="https://wordpress.org/plugins/wpc-variation-duplicator/" target="_blank">WPC Variation Duplicator</a>.
+                                    <a href="https://wordpress.org/plugins/wpc-variation-bulk-editor/" target="_blank">WPC
+                                        Variation Bulk Editor</a> and
+                                    <a href="https://wordpress.org/plugins/wpc-variation-duplicator/" target="_blank">WPC
+                                        Variation Duplicator</a>.
                                 </div>
                             </div>
                         </div>
@@ -454,7 +466,10 @@ if ( ! function_exists( 'woost_init' ) ) {
                     <div class="<?php echo esc_attr( 'woost-tab woost-tab-' . $tab['type'] ); ?> <?php echo esc_attr( $new ? 'active' : '' ); ?>">
                         <div class="woost-tab-header">
                             <span class="woost-tab-move"><?php esc_html_e( 'move', 'wpc-product-tabs' ); ?></span>
-                            <span class="woost-tab-label"><span class="woost-tab-title"><?php echo esc_html( $tab['title'] ); ?></span> <span class="woost-tab-label-type">#<?php echo esc_attr( $tab['type'] ); ?></span> <span class="woost-tab-label-apply"><?php echo esc_attr( $tab['apply'] ); ?></span></span>
+                            <span class="woost-tab-label"><span
+                                        class="woost-tab-title"><?php echo esc_html( $tab['title'] ); ?></span> <span
+                                        class="woost-tab-label-type">#<?php echo esc_attr( $tab['type'] ); ?></span> <span
+                                        class="woost-tab-label-apply"><?php echo esc_attr( $tab['apply'] ); ?></span></span>
                             <span class="woost-tab-remove"><?php esc_html_e( 'remove', 'wpc-product-tabs' ); ?></span>
                         </div>
                         <div class="woost-tab-content">
@@ -465,10 +480,12 @@ if ( ! function_exists( 'woost_init' ) ) {
                                 <div class="woost-tab-line-value">
                                     <div class="woost_apply_wrapper">
                                         <label>
-                                            <select class="woost_apply" name="woost_tabs[<?php echo esc_attr( $key ); ?>][apply]">
+                                            <select class="woost_apply"
+                                                    name="woost_tabs[<?php echo esc_attr( $key ); ?>][apply]">
                                                 <option value="none" <?php selected( $tab['apply'], 'none' ); ?>><?php esc_attr_e( 'None (Disable)', 'wpc-product-tabs' ); ?></option>
                                                 <option value="all" <?php selected( $tab['apply'], 'all' ); ?>><?php esc_attr_e( 'All products', 'wpc-product-tabs' ); ?></option>
-                                                <option value="products" <?php selected( $tab['apply'], 'products' ); ?> disabled><?php esc_attr_e( 'Selected products', 'wpc-product-tabs' ); ?></option>
+                                                <option value="products" <?php selected( $tab['apply'], 'products' ); ?>
+                                                        disabled><?php esc_attr_e( 'Selected products', 'wpc-product-tabs' ); ?></option>
 												<?php
 												$taxonomies = get_object_taxonomies( 'product', 'objects' );
 
@@ -480,7 +497,9 @@ if ( ! function_exists( 'woost_init' ) ) {
                                     </div>
                                     <div class="woost_apply_val_wrapper woost_show hide_if_apply_none hide_if_apply_all hide_if_apply_products">
                                         <label>
-                                            <select class="woost_terms" multiple="multiple" name="woost_tabs[<?php echo esc_attr( $key ); ?>][apply_val][]" data-<?php echo esc_attr( $tab['apply'] ); ?>="<?php echo esc_attr( implode( ',', (array) $tab['apply_val'] ) ); ?>">
+                                            <select class="woost_terms" multiple="multiple"
+                                                    name="woost_tabs[<?php echo esc_attr( $key ); ?>][apply_val][]"
+                                                    data-<?php echo esc_attr( $tab['apply'] ); ?>="<?php echo esc_attr( implode( ',', (array) $tab['apply_val'] ) ); ?>">
 												<?php if ( is_array( $tab['apply_val'] ) && ! empty( $tab['apply_val'] ) ) {
 													foreach ( $tab['apply_val'] as $t ) {
 														if ( $term = get_term_by( 'slug', $t, $tab['apply'] ) ) {
@@ -498,7 +517,8 @@ if ( ! function_exists( 'woost_init' ) ) {
                                 </div>
                                 <div class="woost-tab-line-value">
                                     <label>
-                                        <select name="woost_tabs[<?php echo esc_attr( $key ); ?>][roles][]" multiple class="woost_roles">
+                                        <select name="woost_tabs[<?php echo esc_attr( $key ); ?>][roles][]" multiple
+                                                class="woost_roles">
 											<?php
 											global $wp_roles;
 											$roles = ( ! empty( $tab['roles'] ) ) ? (array) $tab['roles'] : [ 'woost_all' ];
@@ -520,7 +540,8 @@ if ( ! function_exists( 'woost_init' ) ) {
                                 </div>
                                 <div class="woost-tab-line-value">
                                     <label>
-                                        <select class="woost_type" name="woost_tabs[<?php echo esc_attr( $key ); ?>][type]">
+                                        <select class="woost_type"
+                                                name="woost_tabs[<?php echo esc_attr( $key ); ?>][type]">
                                             <option value="description" <?php selected( $tab['type'], 'description' ); ?>><?php esc_html_e( 'Description', 'wpc-product-tabs' ); ?></option>
                                             <option value="additional_information" <?php selected( $tab['type'], 'additional_information' ); ?>><?php esc_html_e( 'Additional Information', 'wpc-product-tabs' ); ?></option>
                                             <option value="reviews" <?php selected( $tab['type'], 'reviews' ); ?>><?php /* translators: reviews */
@@ -565,11 +586,12 @@ if ( ! function_exists( 'woost_init' ) ) {
 												echo '<option value="wpcbr" ' . selected( $tab['type'], 'wpcbr', false ) . '>' . esc_html__( 'WPC Brands', 'wpc-product-tabs' ) . '</option>';
 											}
 
+											echo '<option value="custom" ' . selected( $tab['type'], 'custom', false ) . '>' . esc_html__( 'Custom', 'wpc-product-tabs' ) . '</option>';
+
 											if ( ! $product_id ) {
-												echo '<option value="dynamic" ' . selected( $tab['type'], 'dynamic', false ) . '>' . esc_html__( 'Dynamic', 'wpc-product-tabs' ) . '</option>';
+												echo '<option value="dynamic" ' . selected( $tab['type'], 'dynamic', false ) . ' disabled>' . esc_html__( 'Dynamic (Premium)', 'wpc-product-tabs' ) . '</option>';
 											}
 											?>
-                                            <option value="custom" <?php selected( $tab['type'], 'custom' ); ?>><?php esc_html_e( 'Custom', 'wpc-product-tabs' ); ?></option>
                                         </select> </label>
                                 </div>
                             </div>
@@ -578,9 +600,13 @@ if ( ! function_exists( 'woost_init' ) ) {
 									<?php esc_html_e( 'Title', 'wpc-product-tabs' ); ?>
                                 </div>
                                 <div class="woost-tab-line-value">
-                                    <input type="hidden" value="<?php echo esc_attr( $key ); ?>" name="woost_tabs[<?php echo esc_attr( $key ); ?>][key]"/>
+                                    <input type="hidden" value="<?php echo esc_attr( $key ); ?>"
+                                           name="woost_tabs[<?php echo esc_attr( $key ); ?>][key]"/>
                                     <label>
-                                        <input type="text" class="woost-tab-title-input" style="width: 100%" name="woost_tabs[<?php echo esc_attr( $key ); ?>][title]" placeholder="<?php echo esc_attr( $tab['type'] ); ?>" value="<?php echo esc_attr( $tab['title'] ); ?>" required/>
+                                        <input type="text" class="woost-tab-title-input" style="width: 100%"
+                                               name="woost_tabs[<?php echo esc_attr( $key ); ?>][title]"
+                                               placeholder="<?php echo esc_attr( $tab['type'] ); ?>"
+                                               value="<?php echo esc_attr( $tab['title'] ); ?>" required/>
                                     </label>
                                 </div>
                             </div>
@@ -626,7 +652,9 @@ if ( ! function_exists( 'woost_init' ) ) {
 				function new_tab( $product_id = 0 ) {
 					?>
                     <div class="woost-tabs-new">
-                        <input type="button" class="button woost-tab-new" data-product_id="<?php echo esc_attr( $product_id ); ?>" value="<?php esc_attr_e( '+ Add new tab', 'wpc-product-tabs' ); ?>"/>
+                        <input type="button" class="button woost-tab-new"
+                               data-product_id="<?php echo esc_attr( $product_id ); ?>"
+                               value="<?php esc_attr_e( '+ Add new tab', 'wpc-product-tabs' ); ?>"/>
                     </div>
 					<?php
 				}
@@ -944,56 +972,43 @@ if ( ! function_exists( 'woost_init' ) ) {
                             <span class="woost-overwrite-label"><?php esc_html_e( 'Product Tabs', 'wpc-product-tabs' ); ?></span>
                             <span class="woost-overwrite-items">
                                 <label class="woost-overwrite-item">
-                                    <input name="woost_overwrite" type="radio" value="default" <?php echo esc_attr( empty( $overwrite ) || $overwrite === 'default' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Global', 'wpc-product-tabs' ); ?>
+                                    <input name="woost_overwrite" type="radio"
+                                           value="default" <?php echo esc_attr( empty( $overwrite ) || $overwrite === 'default' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Global', 'wpc-product-tabs' ); ?>
                                 </label>
                                 <label class="woost-overwrite-item">
-                                    <input name="woost_overwrite" type="radio" value="overwrite" <?php echo esc_attr( $overwrite === 'overwrite' || $overwrite === 'on' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Overwrite', 'wpc-product-tabs' ); ?>
+                                    <input name="woost_overwrite" type="radio"
+                                           value="overwrite" <?php echo esc_attr( $overwrite === 'overwrite' || $overwrite === 'on' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Overwrite', 'wpc-product-tabs' ); ?>
                                 </label>
                                 <label class="woost-overwrite-item">
-                                    <input name="woost_overwrite" type="radio" value="prepend" <?php echo esc_attr( $overwrite === 'prepend' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Prepend', 'wpc-product-tabs' ); ?>
+                                    <input name="woost_overwrite" type="radio"
+                                           value="prepend" <?php echo esc_attr( $overwrite === 'prepend' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Prepend', 'wpc-product-tabs' ); ?>
                                 </label>
                                 <label class="woost-overwrite-item">
-                                    <input name="woost_overwrite" type="radio" value="append" <?php echo esc_attr( $overwrite === 'append' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Append', 'wpc-product-tabs' ); ?>
+                                    <input name="woost_overwrite" type="radio"
+                                           value="append" <?php echo esc_attr( $overwrite === 'append' ? 'checked' : '' ); ?>/> <?php esc_html_e( 'Append', 'wpc-product-tabs' ); ?>
                                 </label>
                             </span>
                         </div>
                         <div class="woost-tabs-global">
-                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=global' ) ); ?>" target="_blank"><?php esc_html_e( 'Manager Global Tabs', 'wpc-product-tabs' ); ?></a>
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=wpclever-woost&tab=global' ) ); ?>"
+                               target="_blank"><?php esc_html_e( 'Manager Global Tabs', 'wpc-product-tabs' ); ?></a>
                         </div>
                         <div class="woost-tabs-wrapper">
                             <span style="color: #c9356e;">This feature only available on the Premium Version. Click
-                                <a href="https://wpclever.net/downloads/product-tabs?utm_source=pro&utm_medium=woost&utm_campaign=wporg" target="_blank">here</a>to buy, just $29!
+                                <a href="https://wpclever.net/downloads/product-tabs?utm_source=pro&utm_medium=woost&utm_campaign=wporg"
+                                   target="_blank">here</a>to buy, just $29!
                             </span>
                         </div>
                         <div class="woost-fields-label">
 							<?php esc_html_e( 'Dynamic Fields', 'wpc-product-tabs' ); ?>
-                            <span class="woocommerce-help-tip" data-tip="<?php esc_attr_e( 'These fields corresponding to the Global Tabs have dynamic content.', 'wpc-product-tabs' ); ?>"></span>
+                            <span class="woocommerce-help-tip"
+                                  data-tip="<?php esc_attr_e( 'These fields corresponding to the Global Tabs have dynamic content.', 'wpc-product-tabs' ); ?>"></span>
                         </div>
                         <div class="woost-fields">
-							<?php
-							$fields = self::get_fields();
-
-							if ( is_array( $fields ) && ! empty( $fields ) ) {
-								foreach ( $fields as $key => $field ) {
-									echo '<div class="woost-field">';
-									echo '<div class="woost-field-head"><span class="woost-field-title">' . esc_html( $field ) . '</span> <span class="woost-field-key">' . esc_html( 'woost_' . $key ) . '</span></div>';
-									echo '<div class="woost-field-body">';
-
-									$field_id      = 'woost_' . $key;
-									$field_content = get_post_meta( $product_id, $field_id, true );
-
-									wp_editor( $field_content, $field_id, [
-										'textarea_name' => $field_id,
-										'textarea_rows' => 10
-									] );
-
-									echo '</div>';
-									echo '</div>';
-								}
-							} else {
-								esc_html_e( 'There are no fields.', 'wpc-product-tabs' );
-							}
-							?>
+							<span style="color: #c9356e;">This feature only available on the Premium Version. Click
+                                <a href="https://wpclever.net/downloads/product-tabs?utm_source=pro&utm_medium=woost&utm_campaign=wporg"
+                                   target="_blank">here</a>to buy, just $29!
+                            </span>
                         </div>
                     </div>
 					<?php
