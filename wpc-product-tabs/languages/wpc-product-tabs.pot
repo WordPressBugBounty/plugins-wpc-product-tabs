@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPC Product Tabs for WooCommerce 4.1.9\n"
+"Project-Id-Version: WPC Product Tabs for WooCommerce 4.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpc-product-tabs\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-18T03:49:15+00:00\n"
+"POT-Creation-Date: 2025-06-23T03:26:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wpc-product-tabs\n"
@@ -40,12 +40,12 @@ msgid "https://wpclever.net"
 msgstr ""
 
 #: wpc-product-tabs.php:214
-#: wpc-product-tabs.php:278
+#: wpc-product-tabs.php:285
 msgid "Global Tabs"
 msgstr ""
 
 #: wpc-product-tabs.php:215
-#: wpc-product-tabs.php:283
+#: wpc-product-tabs.php:290
 msgid "Premium Version"
 msgstr ""
 
@@ -54,195 +54,192 @@ msgid "Community support"
 msgstr ""
 
 #: wpc-product-tabs.php:246
-#: wpc-product-tabs.php:256
+#: wpc-product-tabs.php:260
 msgid "WPC Product Tabs"
 msgstr ""
 
 #: wpc-product-tabs.php:246
-#: wpc-product-tabs.php:938
-#: wpc-product-tabs.php:972
+#: wpc-product-tabs.php:958
+#: wpc-product-tabs.php:992
 msgid "Product Tabs"
 msgstr ""
 
-#: wpc-product-tabs.php:256
+#: wpc-product-tabs.php:260
 msgid "Premium"
 msgstr ""
 
 #. translators: stars
-#: wpc-product-tabs.php:259
+#: wpc-product-tabs.php:263
 msgid "Thank you for using our plugin! If you are satisfied, please reward it a full five-star %s rating."
 msgstr ""
 
-#: wpc-product-tabs.php:262
+#: wpc-product-tabs.php:266
 msgid "Reviews"
 msgstr ""
 
-#: wpc-product-tabs.php:264
+#: wpc-product-tabs.php:268
 msgid "Changelog"
 msgstr ""
 
-#: wpc-product-tabs.php:266
+#: wpc-product-tabs.php:270
 msgid "Discussion"
 msgstr ""
 
-#: wpc-product-tabs.php:271
+#: wpc-product-tabs.php:278
 msgid "Settings updated."
 msgstr ""
 
-#: wpc-product-tabs.php:287
+#: wpc-product-tabs.php:294
 msgid "Essential Kit"
 msgstr ""
 
-#: wpc-product-tabs.php:300
-#: wpc-product-tabs.php:545
+#: wpc-product-tabs.php:307
+#: wpc-product-tabs.php:552
 msgid "Description"
 msgstr ""
 
-#: wpc-product-tabs.php:304
-#: wpc-product-tabs.php:546
+#: wpc-product-tabs.php:311
+#: wpc-product-tabs.php:553
 msgid "Additional Information"
 msgstr ""
 
 #. translators: reviews
-#: wpc-product-tabs.php:309
-#: wpc-product-tabs.php:548
+#: wpc-product-tabs.php:316
+#: wpc-product-tabs.php:555
 msgid "Reviews (%d)"
 msgstr ""
 
-#: wpc-product-tabs.php:379
+#: wpc-product-tabs.php:386
 msgid "Tab title"
 msgstr ""
 
-#: wpc-product-tabs.php:468
+#: wpc-product-tabs.php:475
 msgid "move"
 msgstr ""
 
-#: wpc-product-tabs.php:473
+#: wpc-product-tabs.php:480
 msgid "remove"
 msgstr ""
 
-#: wpc-product-tabs.php:478
+#: wpc-product-tabs.php:485
 msgid "Apply for"
 msgstr ""
 
-#: wpc-product-tabs.php:485
+#: wpc-product-tabs.php:492
 msgid "None (Disable)"
 msgstr ""
 
-#: wpc-product-tabs.php:486
+#: wpc-product-tabs.php:493
 msgid "All products"
 msgstr ""
 
-#: wpc-product-tabs.php:488
+#: wpc-product-tabs.php:495
 msgid "Selected products"
 msgstr ""
 
-#: wpc-product-tabs.php:516
+#: wpc-product-tabs.php:523
 msgid "User roles"
 msgstr ""
 
-#: wpc-product-tabs.php:526
+#: wpc-product-tabs.php:533
 msgid "All"
 msgstr ""
 
-#: wpc-product-tabs.php:527
+#: wpc-product-tabs.php:534
 msgid "User (logged in)"
 msgstr ""
 
-#: wpc-product-tabs.php:528
+#: wpc-product-tabs.php:535
 msgid "Guest (not logged in)"
 msgstr ""
 
-#: wpc-product-tabs.php:539
+#: wpc-product-tabs.php:546
 msgid "Type"
 msgstr ""
 
-#: wpc-product-tabs.php:552
-#: wpc-product-tabs.php:556
+#: wpc-product-tabs.php:558
 msgid "WPC Product Bundles"
 msgstr ""
 
-#: wpc-product-tabs.php:560
+#: wpc-product-tabs.php:562
 msgid "WPC Product Bundles - Bundled products"
 msgstr ""
 
-#: wpc-product-tabs.php:564
+#: wpc-product-tabs.php:566
 msgid "WPC Product Bundles - Bundles products"
 msgstr ""
 
-#: wpc-product-tabs.php:569
-#: wpc-product-tabs.php:573
+#: wpc-product-tabs.php:570
 msgid "WPC Grouped Product"
 msgstr ""
 
-#: wpc-product-tabs.php:577
+#: wpc-product-tabs.php:574
 msgid "WPC Product FAQs"
 msgstr ""
 
-#: wpc-product-tabs.php:582
-#: wpc-product-tabs.php:586
+#: wpc-product-tabs.php:578
 msgid "WPC Brands"
 msgstr ""
 
-#: wpc-product-tabs.php:589
+#: wpc-product-tabs.php:581
 msgid "Custom"
 msgstr ""
 
-#: wpc-product-tabs.php:592
+#: wpc-product-tabs.php:584
 msgid "Dynamic (Premium)"
 msgstr ""
 
-#: wpc-product-tabs.php:600
+#: wpc-product-tabs.php:592
 msgid "Title"
 msgstr ""
 
 #. translators: key
-#: wpc-product-tabs.php:618
+#: wpc-product-tabs.php:610
 msgid "A new field %s will be created, and you can fill in the content for this field on each product."
 msgstr ""
 
-#: wpc-product-tabs.php:623
+#: wpc-product-tabs.php:615
 msgid "Content"
 msgstr ""
 
 #. translators: shortcode
-#: wpc-product-tabs.php:640
-#: wpc-product-tabs.php:642
+#: wpc-product-tabs.php:632
+#: wpc-product-tabs.php:634
 msgid "Use shortcode %s to display this tab content where you want."
 msgstr ""
 
-#: wpc-product-tabs.php:657
+#: wpc-product-tabs.php:649
 msgid "+ Add new tab"
 msgstr ""
 
-#: wpc-product-tabs.php:961
+#: wpc-product-tabs.php:981
 msgid "Product wasn't returned."
 msgstr ""
 
-#: wpc-product-tabs.php:976
+#: wpc-product-tabs.php:996
 msgid "Global"
 msgstr ""
 
-#: wpc-product-tabs.php:980
+#: wpc-product-tabs.php:1000
 msgid "Overwrite"
 msgstr ""
 
-#: wpc-product-tabs.php:984
+#: wpc-product-tabs.php:1004
 msgid "Prepend"
 msgstr ""
 
-#: wpc-product-tabs.php:988
+#: wpc-product-tabs.php:1008
 msgid "Append"
 msgstr ""
 
-#: wpc-product-tabs.php:994
+#: wpc-product-tabs.php:1014
 msgid "Manager Global Tabs"
 msgstr ""
 
-#: wpc-product-tabs.php:1003
+#: wpc-product-tabs.php:1023
 msgid "Dynamic Fields"
 msgstr ""
 
-#: wpc-product-tabs.php:1005
+#: wpc-product-tabs.php:1025
 msgid "These fields corresponding to the Global Tabs have dynamic content."
 msgstr ""
