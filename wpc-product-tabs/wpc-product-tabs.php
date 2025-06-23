@@ -3,7 +3,7 @@
 Plugin Name: WPC Product Tabs for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Product tabs manager for WooCommerce.
-Version: 4.2.0
+Version: 4.2.1
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: wpc-product-tabs
@@ -19,7 +19,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.2.0' );
+! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.2.1' );
 ! defined( 'WOOST_LITE' ) && define( 'WOOST_LITE', __FILE__ );
 ! defined( 'WOOST_FILE' ) && define( 'WOOST_FILE', __FILE__ );
 ! defined( 'WOOST_URI' ) && define( 'WOOST_URI', plugin_dir_url( __FILE__ ) );
@@ -129,7 +129,7 @@ if ( ! function_exists( 'woost_init' ) ) {
 
 						if ( ! empty( $tabs[ $key ]['content'] ) ) {
 							// ignore woost shortcodes
-							$tab_content = str_replace( '[woost', '[_woost', $tabs[ $key ]['content'] );
+							$tab_content = str_replace( '[woost_', '[_woost_', $tabs[ $key ]['content'] );
 							$output      = do_shortcode( $tab_content );
 						}
 					}
@@ -183,7 +183,7 @@ if ( ! function_exists( 'woost_init' ) ) {
 						}
 
 						// ignore woost shortcodes
-						$tab_content = str_replace( '[woost', '[_woost', $tab_content );
+						$tab_content = str_replace( '[woost_', '[_woost_', $tab_content );
 						$output      = do_shortcode( $tab_content );
 					}
 
@@ -554,6 +554,11 @@ if ( ! function_exists( 'woost_init' ) ) {
                                             <option value="reviews" <?php selected( $tab['type'], 'reviews' ); ?>><?php /* translators: reviews */
 												esc_html_e( 'Reviews (%d)', 'wpc-product-tabs' ); ?></option>
 											<?php
+											if ( class_exists( 'WPCleverWoosb' ) && ( ( get_option( '_woosb_bundled_position', 'above' ) === 'tab' ) || ( get_option( '_woosb_bundles_position', 'no' ) === 'tab' ) ) ) {
+												// old version
+												echo '<option value="woosb" ' . selected( $tab['type'], 'woosb', false ) . '>' . esc_html__( 'WPC Product Bundles', 'wpc-product-tabs' ) . '</option>';
+											}
+
 											if ( function_exists( 'WPCleverWoosb_Helper' ) && ( ( WPCleverWoosb_Helper()::get_setting( 'bundled_position', 'above' ) === 'tab' ) || ( WPCleverWoosb_Helper()::get_setting( 'bundles_position', 'no' ) === 'tab' ) ) ) {
 												echo '<option value="woosb" ' . selected( $tab['type'], 'woosb', false ) . '>' . esc_html__( 'WPC Product Bundles', 'wpc-product-tabs' ) . '</option>';
 											}
@@ -566,12 +571,22 @@ if ( ! function_exists( 'woost_init' ) ) {
 												echo '<option value="woosb_bundles" ' . selected( $tab['type'], 'woosb_bundles', false ) . '>' . esc_html__( 'WPC Product Bundles - Bundles products', 'wpc-product-tabs' ) . '</option>';
 											}
 
+											if ( class_exists( 'WPCleverWoosg' ) && ( get_option( '_woosg_position', 'above' ) === 'tab' ) ) {
+												// old version
+												echo '<option value="woosg" ' . selected( $tab['type'], 'woosg', false ) . '>' . esc_html__( 'WPC Grouped Product', 'wpc-product-tabs' ) . '</option>';
+											}
+
 											if ( function_exists( 'WPCleverWoosg_Helper' ) && ( WPCleverWoosg_Helper()::get_setting( 'position', 'above' ) === 'tab' ) ) {
 												echo '<option value="woosg" ' . selected( $tab['type'], 'woosg', false ) . '>' . esc_html__( 'WPC Grouped Product', 'wpc-product-tabs' ) . '</option>';
 											}
 
 											if ( class_exists( 'WPCleverWpcpf' ) ) {
 												echo '<option value="wpcpf" ' . selected( $tab['type'], 'wpcpf', false ) . '>' . esc_html__( 'WPC Product FAQs', 'wpc-product-tabs' ) . '</option>';
+											}
+
+											if ( class_exists( 'WPCleverWpcbr' ) && ( get_option( 'wpcbr_single_position', 'after_meta' ) === 'tab' ) ) {
+												// old version
+												echo '<option value="wpcbr" ' . selected( $tab['type'], 'wpcbr', false ) . '>' . esc_html__( 'WPC Brands', 'wpc-product-tabs' ) . '</option>';
 											}
 
 											if ( function_exists( 'WPCleverWpcbr' ) && ( WPCleverWpcbr()::get_setting( 'single_position', 'after_meta' ) === 'tab' ) ) {
@@ -652,80 +667,69 @@ if ( ! function_exists( 'woost_init' ) ) {
 				}
 
 				function get_tabs( $product ) {
-					// Initialize variables with default values
-					$product_id = 0;
-					$saved_tabs = [];
-
-					// Optimize product ID retrieval
 					if ( is_numeric( $product ) ) {
 						$product_id = $product;
 						$product    = wc_get_product( $product_id );
-					} elseif ( $product instanceof WC_Product ) { // More efficient than is_a()
+					} elseif ( is_a( $product, 'WC_Product' ) ) {
 						$product_id = $product->get_id();
+					} else {
+						$product    = null;
+						$product_id = 0;
 					}
 
-					// Early return if no valid product
-					if ( ! $product || ! $product_id ) {
-						return apply_filters( 'woost_get_tabs', [], $product );
-					}
+					$saved_tabs = [];
 
-					// Cache meta values to reduce database calls
-					$overwrite    = get_post_meta( $product_id, 'woost_overwrite', true );
-					$product_tabs = get_post_meta( $product_id, 'woost_tabs', true ) ?: [];
-					$saved_tabs   = self::$tabs;
+					if ( $product && $product_id ) {
+						$overwrite  = get_post_meta( $product_id, 'woost_overwrite', true );
+						$saved_tabs = self::$tabs;
 
-					// Simplify overwrite logic
-					switch ( $overwrite ) {
-						case 'overwrite':
-						case 'on':
-							$saved_tabs = $product_tabs;
-							break;
-						case 'prepend':
-							$saved_tabs = array_merge( $product_tabs, $saved_tabs );
-							break;
-						case 'append':
-							$saved_tabs = array_merge( $saved_tabs, $product_tabs );
-							break;
-					}
+						if ( $overwrite === 'overwrite' || $overwrite === 'on' ) {
+							$saved_tabs = get_post_meta( $product_id, 'woost_tabs', true ) ?: [];
+						}
 
-					if ( ! is_array( $saved_tabs ) || empty( $saved_tabs ) ) {
-						return apply_filters( 'woost_get_tabs', $saved_tabs, $product );
-					}
+						if ( $overwrite === 'prepend' || $overwrite === 'append' ) {
+							$single_tabs = get_post_meta( $product_id, 'woost_tabs', true ) ?: [];
 
-					// Define default tab structure once
-					$default_tab = [
-						'key'       => '',
-						'type'      => 'custom',
-						'apply'     => 'all',
-						'apply_val' => [],
-						'products'  => [],
-						'roles'     => [ 'woost_all' ],
-						'title'     => '',
-						'content'   => ''
-					];
-
-					// Filter tabs in a single pass
-					$saved_tabs = array_filter( $saved_tabs, function ( $saved_tab ) use ( $default_tab, $product_id ) {
-						$saved_tab = array_merge( $default_tab, $saved_tab );
-
-						// Check if tab should be removed based on conditions
-						if ( ! empty( $saved_tab['apply'] ) ) {
-							if ( $saved_tab['apply'] !== 'all' ) {
-								if ( ! empty( $saved_tab['apply_val'] ) &&
-								     ! has_term( $saved_tab['apply_val'], $saved_tab['apply'], $product_id ) ) {
-									return false;
-								}
+							if ( $overwrite === 'prepend' ) {
+								$saved_tabs = array_merge( $single_tabs, $saved_tabs );
 							}
 
-							if ( $saved_tab['apply'] === 'products' &&
-							     ! empty( $saved_tab['products'] ) &&
-							     ! in_array( $product_id, $saved_tab['products'], true ) ) {
-								return false;
+							if ( $overwrite === 'append' ) {
+								$saved_tabs = array_merge( $saved_tabs, $single_tabs );
 							}
 						}
 
-						return self::check_roles( $saved_tab );
-					} );
+						if ( is_array( $saved_tabs ) && ! empty( $saved_tabs ) ) {
+							// check apply
+							foreach ( $saved_tabs as $key => $saved_tab ) {
+								$saved_tab = array_merge( [
+									'key'       => '',
+									'type'      => 'custom',
+									'apply'     => 'all',
+									'apply_val' => [],
+									'products'  => [],
+									'roles'     => [ 'woost_all' ],
+									'title'     => '',
+									'content'   => ''
+								], $saved_tab );
+
+								if ( ! empty( $saved_tab['apply'] ) && ( $saved_tab['apply'] !== 'all' ) && ! empty( $saved_tab['apply_val'] ) && ! has_term( $saved_tab['apply_val'], $saved_tab['apply'], $product_id ) ) {
+									// doesn't apply for current product
+									unset( $saved_tabs[ $key ] );
+								}
+
+								if ( ! empty( $saved_tab['apply'] ) && ( $saved_tab['apply'] === 'products' ) && ! empty( $saved_tab['products'] ) && ! in_array( $product_id, $saved_tab['products'] ) ) {
+									// doesn't apply for current product
+									unset( $saved_tabs[ $key ] );
+								}
+
+								if ( ! self::check_roles( $saved_tab ) ) {
+									// doesn't apply for current user role
+									unset( $saved_tabs[ $key ] );
+								}
+							}
+						}
+					}
 
 					return apply_filters( 'woost_get_tabs', $saved_tabs, $product );
 				}
@@ -793,78 +797,80 @@ if ( ! function_exists( 'woost_init' ) ) {
 
 					$saved_tabs = self::get_tabs( $product );
 
-					if ( ! is_array( $saved_tabs ) || empty( $saved_tabs ) ) {
-						return $tabs;
-					}
+					if ( is_array( $saved_tabs ) && ! empty( $saved_tabs ) ) {
+						$saved_tab_has_description = $saved_tab_has_reviews = $saved_tab_has_additional_information = $saved_tab_has_woosb = $saved_tab_has_woosb_bundled = $saved_tab_has_woosb_bundles = $saved_tab_has_woosg = $saved_tab_has_wpcpf = $saved_tab_has_wpcbr = false;
+						$priority                  = 0;
 
-					// Define special tabs as a constant or class property to avoid recreation
-					$special_tabs = [
-						'description'            => false,
-						'additional_information' => false,
-						'reviews'                => false,
-						'woosb'                  => false,
-						'woosb_bundled'          => false,
-						'woosb_bundles'          => false,
-						'woosg'                  => false,
-						'wpcpf'                  => false,
-						'wpcbr'                  => false
-					];
-
-					// Process tabs
-					foreach ( $saved_tabs as $key => $saved_tab ) {
-						$saved_tab_type  = $saved_tab['type'];
-						$saved_tab_title = apply_filters( 'woost_tab_title', $saved_tab['title'], $key, $saved_tab );
-
-						if ( isset( $special_tabs[ $saved_tab_type ] ) ) {
-							$tabs[ $saved_tab_type ]         = [
-								'title'    => sprintf( $saved_tab_title, $product->get_review_count() ),
-								'priority' => $key // Using $key instead of separate counter
+						foreach ( $saved_tabs as $key => $saved_tab ) {
+							$saved_tab_title = apply_filters( 'woost_tab_title', $saved_tab['title'], $key, $saved_tab );
+							$saved_tab_type  = $saved_tab['type'];
+							$special_tabs    = [
+								'description',
+								'additional_information',
+								'reviews',
+								'woosb',
+								'woosb_bundled',
+								'woosb_bundles',
+								'woosg',
+								'wpcpf',
+								'wpcbr'
 							];
-							$special_tabs[ $saved_tab_type ] = true;
-						} else {
-							$tabs[ 'woost-' . $key ] = [
-								'title'    => $saved_tab_title,
-								'priority' => $key,
-								'callback' => [ $this, 'tab_content' ]
-							];
+
+							if ( in_array( $saved_tab_type, $special_tabs ) ) {
+								$tabs[ $saved_tab_type ]['title']     = sprintf( $saved_tab_title, $product->get_review_count() );
+								$tabs[ $saved_tab_type ]['priority']  = $priority;
+								${'saved_tab_has_' . $saved_tab_type} = true;
+							} else {
+								$tab_slug          = 'woost-' . $key;
+								$tabs[ $tab_slug ] = [
+									'title'    => $saved_tab_title,
+									'priority' => $priority,
+									'callback' => [ $this, 'tab_content' ]
+								];
+							}
+
+							$priority ++;
+						}
+
+						if ( ! $saved_tab_has_description || ! $product->get_description() ) {
+							unset( $tabs['description'] );
+						}
+
+						if ( ! $saved_tab_has_reviews || ! comments_open() ) {
+							unset( $tabs['reviews'] );
+						}
+
+						if ( ! $saved_tab_has_additional_information || ( ! $product->has_attributes() && ! apply_filters( 'wc_product_enable_dimensions_display', $product->has_weight() || $product->has_dimensions() ) ) ) {
+							unset( $tabs['additional_information'] );
+						}
+
+						if ( ! $saved_tab_has_woosb || ! $product->is_type( 'woosb' ) ) {
+							// old version
+							unset( $tabs['woosb'] );
+						}
+
+						if ( ! $saved_tab_has_woosb_bundled ) {
+							unset( $tabs['woosb_bundled'] );
+						}
+
+						if ( ! $saved_tab_has_woosb_bundles ) {
+							unset( $tabs['woosb_bundles'] );
+						}
+
+						if ( ! $saved_tab_has_woosg || ! $product->is_type( 'woosg' ) ) {
+							unset( $tabs['woosg'] );
+						}
+
+						if ( ! $saved_tab_has_wpcpf ) {
+							unset( $tabs['wpcpf'] );
+						}
+
+						if ( ! $saved_tab_has_wpcbr ) {
+							unset( $tabs['wpcbr'] );
 						}
 					}
 
-					// Clean up tabs in a more efficient way
-					if ( ! $special_tabs['description'] || ! $product->get_description() ) {
-						unset( $tabs['description'] );
-					}
-
-					if ( ! $special_tabs['reviews'] || ! comments_open() ) {
-						unset( $tabs['reviews'] );
-					}
-
-					if ( ! $special_tabs['additional_information'] ||
-					     ( ! $product->has_attributes() &&
-					       ! apply_filters( 'wc_product_enable_dimensions_display',
-						       $product->has_weight() || $product->has_dimensions()
-					       ) )
-					) {
-						unset( $tabs['additional_information'] );
-					}
-
-					// Handle product-specific tabs
-					if ( ! $special_tabs['woosb'] || ! $product->is_type( 'woosb' ) ) {
-						unset( $tabs['woosb'] );
-					}
-
-					if ( ! $special_tabs['woosg'] || ! $product->is_type( 'woosg' ) ) {
-						unset( $tabs['woosg'] );
-					}
-
-					// Remove unused special tabs
-					foreach ( [ 'woosb_bundled', 'woosb_bundles', 'wpcpf', 'wpcbr' ] as $tab ) {
-						if ( ! $special_tabs[ $tab ] ) {
-							unset( $tabs[ $tab ] );
-						}
-					}
-
-					return apply_filters( 'woost_product_tabs', $tabs, $product );
+					return $tabs;
 				}
 
 				function tab_content( $name, $tab ) {
@@ -874,50 +880,31 @@ if ( ! function_exists( 'woost_init' ) ) {
 						return;
 					}
 
+					$content    = '';
 					$saved_tabs = self::get_tabs( $product );
 
-					if ( ! is_array( $saved_tabs ) || empty( $saved_tabs ) ) {
-						return;
+					if ( is_array( $saved_tabs ) && ! empty( $saved_tabs ) ) {
+						$key = str_replace( 'woost-', '', $name );
+
+						if ( ! isset( $saved_tabs[ $key ] ) ) {
+							$key = (int) preg_replace( '/\D/', '', $name );
+						}
+
+						if ( isset( $saved_tabs[ $key ] ) ) {
+							$content = apply_filters( 'woost_tab_heading', '<h2 class="woost-tab-heading">' . esc_html( $saved_tabs[ $key ]['title'] ) . '</h2>', $name, $tab );
+
+							if ( isset( $saved_tabs[ $key ]['type'] ) && ( $saved_tabs[ $key ]['type'] === 'dynamic' ) ) {
+								$content .= wpautop( stripslashes( html_entity_decode( get_post_meta( $product->get_id(), 'woost_' . $key, true ) ) ) );
+							} else {
+								if ( ! empty( $saved_tabs[ $key ]['content'] ) ) {
+									$content .= wpautop( stripslashes( html_entity_decode( $saved_tabs[ $key ]['content'] ) ) );
+								}
+							}
+						}
 					}
 
-					// Extract key from name more efficiently
-					$key = strpos( $name, 'woost-' ) === 0
-						? substr( $name, 6 )
-						: (int) preg_replace( '/\D/', '', $name );
-
-					if ( ! isset( $saved_tabs[ $key ] ) ) {
-						return;
-					}
-
-					$tab_data = $saved_tabs[ $key ];
-
-					// Build heading
-					$content = apply_filters(
-						'woost_tab_heading',
-						sprintf( '<h2 class="woost-tab-heading">%s</h2>', esc_html( $tab_data['title'] ) ),
-						$name,
-						$tab
-					);
-
-					// Get content based on tab type
-					if ( isset( $tab_data['type'] ) && $tab_data['type'] === 'dynamic' ) {
-						$meta_key    = 'woost_' . $key;
-						$raw_content = get_post_meta( $product->get_id(), $meta_key, true );
-					} elseif ( ! empty( $tab_data['content'] ) ) {
-						$raw_content = $tab_data['content'];
-					} else {
-						$raw_content = '';
-					}
-
-					// Process content if exists
-					if ( $raw_content ) {
-						$content .= wpautop( stripslashes( html_entity_decode( $raw_content ) ) );
-					}
-
-					// Process shortcodes - using strtr for better performance
-					$content = strtr( $content, [ '[woost' => '[_woost' ] );
-
-					// Output filtered content
+					// ignore woost shortcodes
+					$content = str_replace( '[woost_', '[_woost_', $content );
 					echo apply_filters( 'woost_tab_content', do_shortcode( $content ), $name, $tab );
 				}
 
