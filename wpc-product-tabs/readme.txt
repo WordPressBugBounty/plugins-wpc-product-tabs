@@ -3,8 +3,8 @@ Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, wpc, tab, tabs, custom tabs
 Tested up to: 6.8
-Version: 4.2.1
-Stable tag: 4.2.1
+Version: 4.2.2
+Stable tag: 4.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,9 @@ Please try other plugins from us:
 4. Now you can go to WPClever > Product Tabs to manager product tabs
 
 == Changelog ==
+
+= 4.2.2 =
+* Fixed: Minor JS issues in the backend
 
 = 4.2.1 =
 * Fixed: Tabs are not displayed correctly

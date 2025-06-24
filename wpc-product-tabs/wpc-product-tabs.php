@@ -3,7 +3,7 @@
 Plugin Name: WPC Product Tabs for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Product tabs manager for WooCommerce.
-Version: 4.2.1
+Version: 4.2.2
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: wpc-product-tabs
@@ -19,7 +19,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.2.1' );
+! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.2.2' );
 ! defined( 'WOOST_LITE' ) && define( 'WOOST_LITE', __FILE__ );
 ! defined( 'WOOST_FILE' ) && define( 'WOOST_FILE', __FILE__ );
 ! defined( 'WOOST_URI' ) && define( 'WOOST_URI', plugin_dir_url( __FILE__ ) );
@@ -554,11 +554,6 @@ if ( ! function_exists( 'woost_init' ) ) {
                                             <option value="reviews" <?php selected( $tab['type'], 'reviews' ); ?>><?php /* translators: reviews */
 												esc_html_e( 'Reviews (%d)', 'wpc-product-tabs' ); ?></option>
 											<?php
-											if ( class_exists( 'WPCleverWoosb' ) && ( ( get_option( '_woosb_bundled_position', 'above' ) === 'tab' ) || ( get_option( '_woosb_bundles_position', 'no' ) === 'tab' ) ) ) {
-												// old version
-												echo '<option value="woosb" ' . selected( $tab['type'], 'woosb', false ) . '>' . esc_html__( 'WPC Product Bundles', 'wpc-product-tabs' ) . '</option>';
-											}
-
 											if ( function_exists( 'WPCleverWoosb_Helper' ) && ( ( WPCleverWoosb_Helper()::get_setting( 'bundled_position', 'above' ) === 'tab' ) || ( WPCleverWoosb_Helper()::get_setting( 'bundles_position', 'no' ) === 'tab' ) ) ) {
 												echo '<option value="woosb" ' . selected( $tab['type'], 'woosb', false ) . '>' . esc_html__( 'WPC Product Bundles', 'wpc-product-tabs' ) . '</option>';
 											}
@@ -571,22 +566,12 @@ if ( ! function_exists( 'woost_init' ) ) {
 												echo '<option value="woosb_bundles" ' . selected( $tab['type'], 'woosb_bundles', false ) . '>' . esc_html__( 'WPC Product Bundles - Bundles products', 'wpc-product-tabs' ) . '</option>';
 											}
 
-											if ( class_exists( 'WPCleverWoosg' ) && ( get_option( '_woosg_position', 'above' ) === 'tab' ) ) {
-												// old version
-												echo '<option value="woosg" ' . selected( $tab['type'], 'woosg', false ) . '>' . esc_html__( 'WPC Grouped Product', 'wpc-product-tabs' ) . '</option>';
-											}
-
 											if ( function_exists( 'WPCleverWoosg_Helper' ) && ( WPCleverWoosg_Helper()::get_setting( 'position', 'above' ) === 'tab' ) ) {
 												echo '<option value="woosg" ' . selected( $tab['type'], 'woosg', false ) . '>' . esc_html__( 'WPC Grouped Product', 'wpc-product-tabs' ) . '</option>';
 											}
 
 											if ( class_exists( 'WPCleverWpcpf' ) ) {
 												echo '<option value="wpcpf" ' . selected( $tab['type'], 'wpcpf', false ) . '>' . esc_html__( 'WPC Product FAQs', 'wpc-product-tabs' ) . '</option>';
-											}
-
-											if ( class_exists( 'WPCleverWpcbr' ) && ( get_option( 'wpcbr_single_position', 'after_meta' ) === 'tab' ) ) {
-												// old version
-												echo '<option value="wpcbr" ' . selected( $tab['type'], 'wpcbr', false ) . '>' . esc_html__( 'WPC Brands', 'wpc-product-tabs' ) . '</option>';
 											}
 
 											if ( function_exists( 'WPCleverWpcbr' ) && ( WPCleverWpcbr()::get_setting( 'single_position', 'after_meta' ) === 'tab' ) ) {
@@ -870,7 +855,7 @@ if ( ! function_exists( 'woost_init' ) ) {
 						}
 					}
 
-					return $tabs;
+					return apply_filters( 'woost_product_tabs', $tabs, $product );
 				}
 
 				function tab_content( $name, $tab ) {

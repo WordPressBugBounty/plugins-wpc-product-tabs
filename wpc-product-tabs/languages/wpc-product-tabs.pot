@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPC Product Tabs for WooCommerce 4.2.1\n"
+"Project-Id-Version: WPC Product Tabs for WooCommerce 4.2.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpc-product-tabs\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-23T08:14:04+00:00\n"
+"POT-Creation-Date: 2025-06-24T05:36:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wpc-product-tabs\n"
@@ -59,8 +59,8 @@ msgid "WPC Product Tabs"
 msgstr ""
 
 #: wpc-product-tabs.php:246
-#: wpc-product-tabs.php:945
-#: wpc-product-tabs.php:979
+#: wpc-product-tabs.php:930
+#: wpc-product-tabs.php:964
 msgid "Product Tabs"
 msgstr ""
 
@@ -157,92 +157,89 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: wpc-product-tabs.php:559
-#: wpc-product-tabs.php:563
+#: wpc-product-tabs.php:558
 msgid "WPC Product Bundles"
 msgstr ""
 
-#: wpc-product-tabs.php:567
+#: wpc-product-tabs.php:562
 msgid "WPC Product Bundles - Bundled products"
 msgstr ""
 
-#: wpc-product-tabs.php:571
+#: wpc-product-tabs.php:566
 msgid "WPC Product Bundles - Bundles products"
 msgstr ""
 
-#: wpc-product-tabs.php:576
-#: wpc-product-tabs.php:580
+#: wpc-product-tabs.php:570
 msgid "WPC Grouped Product"
 msgstr ""
 
-#: wpc-product-tabs.php:584
+#: wpc-product-tabs.php:574
 msgid "WPC Product FAQs"
 msgstr ""
 
-#: wpc-product-tabs.php:589
-#: wpc-product-tabs.php:593
+#: wpc-product-tabs.php:578
 msgid "WPC Brands"
 msgstr ""
 
-#: wpc-product-tabs.php:596
+#: wpc-product-tabs.php:581
 msgid "Custom"
 msgstr ""
 
-#: wpc-product-tabs.php:599
+#: wpc-product-tabs.php:584
 msgid "Dynamic (Premium)"
 msgstr ""
 
-#: wpc-product-tabs.php:607
+#: wpc-product-tabs.php:592
 msgid "Title"
 msgstr ""
 
 #. translators: key
-#: wpc-product-tabs.php:625
+#: wpc-product-tabs.php:610
 msgid "A new field %s will be created, and you can fill in the content for this field on each product."
 msgstr ""
 
-#: wpc-product-tabs.php:630
+#: wpc-product-tabs.php:615
 msgid "Content"
 msgstr ""
 
 #. translators: shortcode
-#: wpc-product-tabs.php:647
-#: wpc-product-tabs.php:649
+#: wpc-product-tabs.php:632
+#: wpc-product-tabs.php:634
 msgid "Use shortcode %s to display this tab content where you want."
 msgstr ""
 
-#: wpc-product-tabs.php:664
+#: wpc-product-tabs.php:649
 msgid "+ Add new tab"
 msgstr ""
 
-#: wpc-product-tabs.php:968
+#: wpc-product-tabs.php:953
 msgid "Product wasn't returned."
 msgstr ""
 
-#: wpc-product-tabs.php:983
+#: wpc-product-tabs.php:968
 msgid "Global"
 msgstr ""
 
-#: wpc-product-tabs.php:987
+#: wpc-product-tabs.php:972
 msgid "Overwrite"
 msgstr ""
 
-#: wpc-product-tabs.php:991
+#: wpc-product-tabs.php:976
 msgid "Prepend"
 msgstr ""
 
-#: wpc-product-tabs.php:995
+#: wpc-product-tabs.php:980
 msgid "Append"
 msgstr ""
 
-#: wpc-product-tabs.php:1001
+#: wpc-product-tabs.php:986
 msgid "Manager Global Tabs"
 msgstr ""
 
-#: wpc-product-tabs.php:1010
+#: wpc-product-tabs.php:995
 msgid "Dynamic Fields"
 msgstr ""
 
-#: wpc-product-tabs.php:1012
+#: wpc-product-tabs.php:997
 msgid "These fields corresponding to the Global Tabs have dynamic content."
 msgstr ""
