@@ -3,7 +3,7 @@
 Plugin Name: WPC Product Tabs for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Product tabs manager for WooCommerce.
-Version: 4.2.2
+Version: 4.2.3
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: wpc-product-tabs
@@ -12,14 +12,14 @@ Requires Plugins: woocommerce
 Requires at least: 4.0
 Tested up to: 6.8
 WC requires at least: 3.0
-WC tested up to: 9.9
+WC tested up to: 10.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.2.2' );
+! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.2.3' );
 ! defined( 'WOOST_LITE' ) && define( 'WOOST_LITE', __FILE__ );
 ! defined( 'WOOST_FILE' ) && define( 'WOOST_FILE', __FILE__ );
 ! defined( 'WOOST_URI' ) && define( 'WOOST_URI', plugin_dir_url( __FILE__ ) );
