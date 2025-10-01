@@ -3,8 +3,8 @@ Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, wpc, tab, tabs, custom tabs
 Tested up to: 6.8
-Version: 4.2.3
-Stable tag: 4.2.3
+Version: 4.2.4
+Stable tag: 4.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ WPC Product Tabs is a plugin for managing product tabs. The built-in WYSIWYG edi
 
 == Description ==
 
-**WPC Product Tabs for WooCommerce** is indeed a simply usable plugin for adding custom tabs to your products and provide your buyers with extra details for boosting customers’ confidence in the items. There are three predefined product tabs for users to utilize or they can totally create a new custom tabs to their preferences in terms of style and formatting.
+**WPC Product Tabs for WooCommerce** is indeed a simply usable plugin for adding custom tabs to your products and provide your buyers with extra details for boosting customers’ confidence in the items. There are three predefined product tabs for users to use, or they can totally create a new custom tab to their preferences in terms of style and formatting.
 
 = Live demo =
 
@@ -35,11 +35,11 @@ Visit our [live demo](https://demo.wpclever.net/woost/ "live demo") here to see 
 
 = Adding Extra Details for Transparency =
 
-When you find that the WooCommerce’s default provided information is not enough to showcase the advantages of your products, it’s time for this WPC Product Tabs plugin to step in and save the day. It’s easy to add a predefined tab from the setting or create a new custom tab with the intuitive editor. Some special products are really in need of this extra product tab to show more convincing reasons for buyers to purchase from your store. This increase in transparency of product attributes and functionalities would gain you more confidence from customers, thus improve the sale values.
+When you find that the WooCommerce’s default-provided information is not enough to showcase the advantages of your products, it’s time for this WPC Product Tabs plugin to step in and save the day. It’s straightforward to add a predefined tab from the setting or create a new custom tab with the intuitive editor. Some special products are really in need of this extra product tab to show more convincing reasons for buyers to purchase from your store. This increase in transparency of product attributes and functionalities would gain you more confidence from customers, thus improve the sale values.
 
 = Highly Customizable Custom Tab Interface =
 
-In creating a new custom tab, users can easily know what they need to do and how the tab will appear in the front-end as it adopts a WYSIWYG editor interface. Even for predefined tabs, users can adjust the order of their appearance by holding and dragging a button to move or edit the title of the tabs to their preferences. All this process is intuitive so there’s no need for complex configurations or any documentation. Users of any levels, whether beginners or experienced ones, can start working on this plugin right after installing and opening the plugin settings.
+In creating a new custom tab, users can easily know what they need to do and how the tab will appear in the front-end as it adopts a WYSIWYG editor interface. Even for predefined tabs, users can adjust the order of their appearance by holding and dragging a button to move or edit the title of the tabs to their preferences. All this process is intuitive, so there’s no need for complex configurations or any documentation. Users of any level, whether beginners or experienced ones, can start working on this plugin right after installing and opening the plugin settings.
 
 = Premium: Global Tabs for Selected Products & Individual Tabs =
 
@@ -63,10 +63,14 @@ Please try other plugins from us:
 
 1. Please make sure that you installed WooCommerce
 2. Go to plugins in your dashboard and select "Add New"
-3. Search for "WPC Product Tabs", Install & Activate it
+3. Search for "WPC Product Tabs," Install & Activate it
 4. Now you can go to WPClever > Product Tabs to manager product tabs
 
 == Changelog ==
+
+= 4.2.4 =
+* Fixed: Minor JS/CSS issues in the backend
+* Updated: Compatible with WP 6.8 & Woo 10.2
 
 = 4.2.3 =
 * Updated: Optimized the code
@@ -181,7 +185,7 @@ Please try other plugins from us:
 * Added: Append/prepend tabs to Global Tabs
 
 = 2.0.1 =
-* Fixed: Tab content losing format
+* Fixed: Tab content a losing format
 
 = 2.0.0 =
 * Fixed: WPML compatible
@@ -233,7 +237,7 @@ Please try other plugins from us:
 * Updated: Compatible with WordPress 5.8 & WooCommerce 5.5.1
 
 = 1.4.3 =
-* Fixed: Remove filter from custom content tab
+* Fixed: Remove filter from the custom content tab
 
 = 1.4.2 =
 * Fixed: Hide the tab Description, Additional Information, or Reviews if it hasn't the content
