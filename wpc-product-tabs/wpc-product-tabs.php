@@ -3,29 +3,29 @@
 Plugin Name: WPC Product Tabs for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Product tabs manager for WooCommerce.
-Version: 4.2.4
+Version: 4.2.6
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: wpc-product-tabs
 Domain Path: /languages/
 Requires Plugins: woocommerce
 Requires at least: 4.0
-Tested up to: 6.8
+Tested up to: 6.9
 WC requires at least: 3.0
-WC tested up to: 10.2
+WC tested up to: 10.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.2.4' );
+! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.2.6' );
 ! defined( 'WOOST_LITE' ) && define( 'WOOST_LITE', __FILE__ );
 ! defined( 'WOOST_FILE' ) && define( 'WOOST_FILE', __FILE__ );
 ! defined( 'WOOST_URI' ) && define( 'WOOST_URI', plugin_dir_url( __FILE__ ) );
 ! defined( 'WOOST_DIR' ) && define( 'WOOST_DIR', plugin_dir_path( __FILE__ ) );
 ! defined( 'WOOST_SUPPORT' ) && define( 'WOOST_SUPPORT', 'https://wpclever.net/support?utm_source=support&utm_medium=woost&utm_campaign=wporg' );
-! defined( 'WOOST_REVIEWS' ) && define( 'WOOST_REVIEWS', 'https://wordpress.org/support/plugin/wpc-product-tabs/reviews/?filter=5' );
+! defined( 'WOOST_REVIEWS' ) && define( 'WOOST_REVIEWS', 'https://wordpress.org/support/plugin/wpc-product-tabs/reviews/' );
 ! defined( 'WOOST_CHANGELOG' ) && define( 'WOOST_CHANGELOG', 'https://wordpress.org/plugins/wpc-product-tabs/#developers' );
 ! defined( 'WOOST_DISCUSSION' ) && define( 'WOOST_DISCUSSION', 'https://wordpress.org/support/plugin/wpc-product-tabs' );
 ! defined( 'WPC_URI' ) && define( 'WPC_URI', WOOST_URI );
@@ -239,7 +239,10 @@ if ( ! function_exists( 'woost_init' ) ) {
 
                 function register_settings() {
                     // settings
-                    register_setting( 'woost_settings', 'woost_tabs' );
+                    register_setting( 'woost_settings', 'woost_tabs', [
+                            'type'              => 'array',
+                            'sanitize_callback' => [ $this, 'sanitize_array' ],
+                    ] );
                 }
 
                 function admin_menu() {
@@ -335,6 +338,10 @@ if ( ! function_exists( 'woost_init' ) ) {
                                         <tr class="submit">
                                             <th colspan="2">
                                                 <?php settings_fields( 'woost_settings' ); ?><?php submit_button(); ?>
+                                                <a style="display: none;" class="wpclever_export"
+                                                   data-key="woost_tabs"
+                                                   data-name="tabs"
+                                                   href="#"><?php esc_html_e( 'import / export', 'wpc-product-tabs' ); ?></a>
                                             </th>
                                         </tr>
                                     </table>
@@ -1031,7 +1038,7 @@ if ( ! function_exists( 'woost_init' ) ) {
                     return $object;
                 }
 
-                function sanitize_array( $arr ) {
+                public static function sanitize_array( $arr ) {
                     foreach ( (array) $arr as $k => $v ) {
                         if ( is_array( $v ) ) {
                             $arr[ $k ] = self::sanitize_array( $v );
