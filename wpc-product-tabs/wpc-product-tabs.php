@@ -3,7 +3,7 @@
 Plugin Name: WPC Product Tabs for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Product tabs manager for WooCommerce.
-Version: 4.2.6
+Version: 4.2.7
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: wpc-product-tabs
@@ -12,14 +12,14 @@ Requires Plugins: woocommerce
 Requires at least: 4.0
 Tested up to: 6.9
 WC requires at least: 3.0
-WC tested up to: 10.4
+WC tested up to: 10.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.2.6' );
+! defined( 'WOOST_VERSION' ) && define( 'WOOST_VERSION', '4.2.7' );
 ! defined( 'WOOST_LITE' ) && define( 'WOOST_LITE', __FILE__ );
 ! defined( 'WOOST_FILE' ) && define( 'WOOST_FILE', __FILE__ );
 ! defined( 'WOOST_URI' ) && define( 'WOOST_URI', plugin_dir_url( __FILE__ ) );
@@ -68,6 +68,7 @@ if ( ! function_exists( 'woost_init' ) ) {
 
                     // settings page
                     add_action( 'admin_init', [ $this, 'register_settings' ] );
+                    add_filter( 'pre_update_option', [ $this, 'last_saved' ], 10, 2 );
                     add_action( 'admin_menu', [ $this, 'admin_menu' ] );
 
                     // settings link
@@ -239,10 +240,23 @@ if ( ! function_exists( 'woost_init' ) ) {
 
                 function register_settings() {
                     // settings
+                    register_setting( 'woost_settings', 'woost_settings', [
+                            'type'              => 'array',
+                            'sanitize_callback' => [ $this, 'sanitize_array' ],
+                    ] );
                     register_setting( 'woost_settings', 'woost_tabs', [
                             'type'              => 'array',
                             'sanitize_callback' => [ $this, 'sanitize_array' ],
                     ] );
+                }
+
+                function last_saved( $value, $option ) {
+                    if ( $option == 'woost_settings' ) {
+                        $value['_last_saved']    = current_time( 'timestamp' );
+                        $value['_last_saved_by'] = get_current_user_id();
+                    }
+
+                    return $value;
                 }
 
                 function admin_menu() {
@@ -337,7 +351,17 @@ if ( ! function_exists( 'woost_init' ) ) {
                                         </tr>
                                         <tr class="submit">
                                             <th colspan="2">
-                                                <?php settings_fields( 'woost_settings' ); ?><?php submit_button(); ?>
+                                                <div class="wpclever_submit">
+                                                    <?php
+                                                    echo '<input type="hidden" name="woost_settings[version]" value="' . esc_attr( WOOST_VERSION ) . '"/>';
+                                                    settings_fields( 'woost_settings' );
+                                                    submit_button( '', 'primary', 'submit', false );
+
+                                                    if ( function_exists( 'wpc_last_saved' ) ) {
+                                                        wpc_last_saved( get_option( 'woost_settings', [] ) );
+                                                    }
+                                                    ?>
+                                                </div>
                                                 <a style="display: none;" class="wpclever_export"
                                                    data-key="woost_tabs"
                                                    data-name="tabs"
